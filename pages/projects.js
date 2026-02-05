@@ -22,6 +22,11 @@ export default function Projects(){
           <h3>Clementine Kids</h3>
           <p>Children's clothing brand. <a href="https://clementinekids.com">Visit site</a></p>
         </section>
+
+        <section className="card" style={{marginTop:'1rem'}}>
+          <h3>Pocket Pal — Mini Tamagotchi</h3>
+          <p>A small pixel‑style virtual pet I built as a playful demo. Feed it, put it to sleep, and play with it — state is saved in your browser. <a href="/tamagotchi">Play Pocket Pal →</a></p>
+        </section>
       </main>
     </div>
   )
