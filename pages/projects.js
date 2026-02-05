@@ -36,7 +36,13 @@ export default function Projects(){
 
         <section className="card" style={{marginTop:'1rem'}}>
           <h3>Tony Grove — Music</h3>
-          <p>Listen to my music project: <a href="https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw" target="_blank" rel="noopener noreferrer">Spotify</a></p>
+          <div style={{display:'flex',gap:'1rem',alignItems:'center',flexWrap:'wrap'}}>
+            <iframe src="https://open.spotify.com/embed/artist/683U6wyvDadi5GExsaaojj" width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <div>
+              <p style={{marginTop:0}}>Listen on Spotify:</p>
+              <p style={{marginTop:6}}><a href="https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw" target="_blank" rel="noopener noreferrer">Open in Spotify</a></p>
+            </div>
+          </div>
         </section>
       </main>
     </div>
