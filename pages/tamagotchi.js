@@ -4,6 +4,7 @@ const PetAvatar = dynamic(()=>import('../components/PetAvatar'), {ssr:false})
 const PixelPet = dynamic(()=>import('../components/PixelPet32'), {ssr:false})
 const VectorPet = dynamic(()=>import('../components/VectorPet'), {ssr:false})
 const AnimatedPet = dynamic(()=>import('../components/AnimatedPet'), {ssr:false})
+const CanvasPet = dynamic(()=>import('../components/CanvasPet'), {ssr:false})
 
 const MAX_STAT = 100
 const DECAY = 1 // per interval
@@ -76,7 +77,8 @@ export default function Tamagotchi(){
             {/* switch to pixel pet for retro look */}
             {/* Vector pet (clean, scalable) */}
             {/* Animated SVG pet (bobbing, blink) */}
-            <AnimatedPet mood={happiness>60?'happy':happiness<30?'sad':'neutral'} play={playAnim} size={180} />
+            {/* Canvas-based pet for richer 2D animation */}
+            <CanvasPet mood={happiness>60?'happy':happiness<30?'sad':'neutral'} play={playAnim} size={180} />
             <p>Hunger: {hunger}</p>
             <div style={{background:'#eee',height:10,borderRadius:6}}><div style={{width:`${hunger}%`,height:10,background:'#f97316',borderRadius:6}}></div></div>
             <p>Energy: {energy}</p>
