@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react'
+import dynamic from 'next/dynamic'
+const PetAvatar = dynamic(()=>import('../components/PetAvatar'), {ssr:false})
 
 const MAX_STAT = 100
 const DECAY = 1 // per interval
@@ -10,6 +12,7 @@ export default function Tamagotchi(){
   const [happiness, setHappiness] = useState(50)
   const [name, setName] = useState('Buddy')
   const [lastSaved, setLastSaved] = useState(null)
+  const [playAnim, setPlayAnim] = useState(false)
 
   // load from localStorage
   useEffect(()=>{
@@ -46,7 +49,7 @@ export default function Tamagotchi(){
 
   function handleEat(){ setHunger(h=>clamp(h+20)); setHappiness(h=>clamp(h+5)); saveState() }
   function handleSleep(){ setEnergy(e=>clamp(e+30)); setHunger(h=>clamp(h-5)); saveState() }
-  function handlePlay(){ setHappiness(h=>clamp(h+20)); setEnergy(e=>clamp(e-10)); setHunger(h=>clamp(h-10)); saveState() }
+  function handlePlay(){ setHappiness(h=>clamp(h+20)); setEnergy(e=>clamp(e-10)); setHunger(h=>clamp(h-10)); setPlayAnim(true); saveState(); setTimeout(()=>setPlayAnim(false),700) }
   function handleReset(){ localStorage.removeItem('tama-state'); setHunger(50); setEnergy(50); setHappiness(50); setName('Buddy'); saveState() }
 
   return (
@@ -68,6 +71,7 @@ export default function Tamagotchi(){
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem',alignItems:'center'}}>
           <div className="card">
             <h3>Stats</h3>
+            <PetAvatar mood={happiness>60?'happy':happiness<30?'sad':'neutral'} animatePlay={playAnim} />
             <p>Hunger: {hunger}</p>
             <div style={{background:'#eee',height:10,borderRadius:6}}><div style={{width:`${hunger}%`,height:10,background:'#f97316',borderRadius:6}}></div></div>
             <p>Energy: {energy}</p>
