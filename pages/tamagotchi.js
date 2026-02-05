@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import dynamic from 'next/dynamic'
 const PetAvatar = dynamic(()=>import('../components/PetAvatar'), {ssr:false})
+const PixelPet = dynamic(()=>import('../components/PixelPet'), {ssr:false})
 
 const MAX_STAT = 100
 const DECAY = 1 // per interval
@@ -71,7 +72,8 @@ export default function Tamagotchi(){
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem',alignItems:'center'}}>
           <div className="card">
             <h3>Stats</h3>
-            <PetAvatar mood={happiness>60?'happy':happiness<30?'sad':'neutral'} animatePlay={playAnim} />
+            {/* switch to pixel pet for retro look */}
+            <PixelPet palette={happiness>60?'warm':'retro'} animate={playAnim} />
             <p>Hunger: {hunger}</p>
             <div style={{background:'#eee',height:10,borderRadius:6}}><div style={{width:`${hunger}%`,height:10,background:'#f97316',borderRadius:6}}></div></div>
             <p>Energy: {energy}</p>
