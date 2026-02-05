@@ -16,11 +16,13 @@ export default function Projects(){
         <h1>Projects & Work</h1>
         <section className="card">
           <h3>Bridger Gear</h3>
-          <p>Outdoor apparel and gear. <a href="https://bridgergear.com">Visit site</a></p>
+          <p>Founder of Bridger Gear, an outdoor brand focused on accessible, well-designed gear. Bridger Gear's mission: "The Outdoors Is For Everyone!" Their signature product is the Empyrean Hammy Pack — a hammock system designed to be easy to carry and use.</p>
+          <p><a href="https://bridgergear.com">bridgergear.com</a></p>
         </section>
         <section className="card" style={{marginTop:'1rem'}}>
           <h3>Clementine Kids</h3>
-          <p>Baby and kids bedding brand (sheets, blankets, and nursery textiles). <a href="https://clementinekids.com">Visit site</a></p>
+          <p>Involved with Clementine Kids — a baby and kids bedding brand (sheets, blankets, and nursery textiles). For contact: support@clementinekids.com</p>
+          <p><a href="https://clementinekids.com">clementinekids.com</a></p>
         </section>
 
         <section className="card" style={{marginTop:'1rem'}}>
