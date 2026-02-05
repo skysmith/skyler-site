@@ -27,6 +27,11 @@ export default function Projects(){
           <h3>Pocket Pal — Mini Tamagotchi</h3>
           <p>A small pixel‑style virtual pet I built as a playful demo. Feed it, put it to sleep, and play with it — state is saved in your browser. <a href="/tamagotchi">Play Pocket Pal →</a></p>
         </section>
+
+        <section className="card" style={{marginTop:'1rem'}}>
+          <h3>Tony Grove — Music</h3>
+          <p>Listen to the Tony Grove soundtrack: <a href="https://open.spotify.com/search/Tony%20Grove" target="_blank" rel="noopener noreferrer">Spotify search for Tony Grove</a> · <a href="https://music.apple.com/us/search?term=Tony%20Grove" target="_blank" rel="noopener noreferrer">Apple Music search for Tony Grove</a></p>
+        </section>
       </main>
     </div>
   )

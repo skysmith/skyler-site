@@ -68,7 +68,7 @@ export default function Tamagotchi(){
         </div>
       </header>
       <main className="container">
-        <h1>Tamagotchi — {name}</h1>
+        <h1>Pocket Pal — {name}</h1>
         <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem',alignItems:'center'}}>
           <div className="card">
             <h3>Stats</h3>
