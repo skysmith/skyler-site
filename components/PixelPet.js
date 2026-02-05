@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 // 16x16 pixel pet SVG. Palette selectable via prop.
 export default function PixelPet({palette='warm', animate=false}){
   const palettes = {
-    warm:['#fde68a','#f59e0b','#f97316','#ffffff','#111827'],
+    warm:['#ffedd5','#f97316','#ffb380','#ffffff','#1f2937'], // warm fox palette
     retro:['#e6ffed','#16a34a','#10b981','#ffffff','#011627']
   }
   const colors = palettes[palette] || palettes.warm
@@ -20,16 +20,17 @@ export default function PixelPet({palette='warm', animate=false}){
   const bob = animate ? {transform:'translateY(-4px)'} : {}
 
   // pixel map is a 16x16 array of indices into colors or null
+  // Updated map for a fox-like sprite (16x16). Indexes: 0 background,1 body,2 ear,3 cheek,4 eye/dark
   const map = [
-    [null,null,null,null,null,null,null,1,1,null,null,null,null,null,null,null],
-    [null,null,null,null,null,1,1,1,1,1,null,null,null,null,null,null,null],
-    [null,null,null,1,1,1,1,2,2,1,1,1,null,null,null,null],
-    [null,null,1,1,3,3,1,2,2,1,3,3,1,null,null,null],
-    [null,1,1,3,3,3,1,2,2,1,3,3,3,1,null,null],
-    [null,1,1,3,3,3,1,1,1,1,3,3,3,1,1,null],
+    [null,null,null,null,null,null,1,1,1,1,null,null,null,null,null,null],
+    [null,null,null,null,1,1,1,1,1,1,1,null,null,null,null,null],
+    [null,null,null,1,1,2,1,1,1,1,1,1,1,null,null,null],
+    [null,null,1,1,3,1,1,1,1,1,1,3,1,1,null,null],
+    [null,1,1,3,3,1,1,1,1,1,1,3,3,1,null,null],
+    [null,1,1,1,1,1,1,1,1,1,1,1,1,1,1,null],
     [null,1,1,1,1,1,1,4,4,1,1,1,1,1,1,null],
     [null,1,1,1,1,1,1,4,4,1,1,1,1,1,1,null],
-    [null,null,1,1,1,1,1,1,1,1,1,1,1,1,null,null],
+    [null,null,1,1,1,1,1,1,1,1,1,1,1,null,null,null],
     [null,null,null,1,1,1,1,1,1,1,1,1,1,null,null,null],
     [null,null,null,null,1,1,1,1,1,1,1,1,null,null,null,null],
     [null,null,null,null,null,1,1,1,1,1,1,null,null,null,null,null],
