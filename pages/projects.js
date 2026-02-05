@@ -35,7 +35,7 @@ export default function Projects(){
         </section>
 
         <section className="card" style={{marginTop:'1rem'}}>
-          <h3>Music</h3>
+          <h3>Tony Grove — Music</h3>
           <p>Listen to my music project: <a href="https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw" target="_blank" rel="noopener noreferrer">Spotify</a></p>
         </section>
       </main>
