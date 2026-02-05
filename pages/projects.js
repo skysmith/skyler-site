@@ -20,7 +20,7 @@ export default function Projects(){
         </section>
         <section className="card" style={{marginTop:'1rem'}}>
           <h3>Clementine Kids</h3>
-          <p>Children's clothing brand. <a href="https://clementinekids.com">Visit site</a></p>
+          <p>Baby and kids bedding brand (sheets, blankets, and nursery textiles). <a href="https://clementinekids.com">Visit site</a></p>
         </section>
 
         <section className="card" style={{marginTop:'1rem'}}>

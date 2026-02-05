@@ -23,7 +23,7 @@ export default function About(){
 
         <section className="card" style={{marginTop:'1rem'}}>
           <h3>Clementine Kids</h3>
-          <p>Involved with Clementine Kids — children's clothing brand. For contact: support@clementinekids.com</p>
+          <p>Involved with Clementine Kids — a baby and kids bedding brand (sheets, blankets, and nursery textiles). For contact: support@clementinekids.com</p>
           <p><a href="https://clementinekids.com">clementinekids.com</a></p>
         </section>
 
