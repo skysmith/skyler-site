@@ -6,7 +6,6 @@ export default function Contact(){
           <div style={{fontWeight:700}}>Skyler Smith</div>
           <nav>
             <a href="/">Home</a>
-            <a href="/about">About</a>
             <a href="/projects">Projects</a>
             <a href="/contact">Contact</a>
           </nav>

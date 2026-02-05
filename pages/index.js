@@ -7,7 +7,6 @@ export default function Home() {
           <div style={{fontWeight:700}}>Skyler Smith</div>
           <nav>
             <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact</Link>
           </nav>
@@ -22,7 +21,7 @@ export default function Home() {
         <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem'}}>
           <div className="card">
             <h3>About</h3>
-            <p>Short bio, links, and recent work. <Link href="/about">Read more →</Link></p>
+            <p>Short bio, links, and recent work.</p>
           </div>
           <div className="card">
             <h3>Latest Projects</h3>

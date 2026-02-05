@@ -6,7 +6,6 @@ export default function Projects(){
           <div style={{fontWeight:700}}>Skyler Smith</div>
           <nav>
             <a href="/">Home</a>
-            <a href="/about">About</a>
             <a href="/projects">Projects</a>
             <a href="/contact">Contact</a>
           </nav>
@@ -28,6 +27,11 @@ export default function Projects(){
         <section className="card" style={{marginTop:'1rem'}}>
           <h3>Pocket Pal — Mini Tamagotchi</h3>
           <p>A small pixel‑style virtual pet I built as a playful demo. Feed it, put it to sleep, and play with it — state is saved in your browser. <a href="/tamagotchi">Play Pocket Pal →</a></p>
+        </section>
+
+        <section className="card" style={{marginTop:'1rem'}}>
+          <h3>Dwell Realty Group</h3>
+          <p>Established and focused in Cache Valley — Dwell Realty Group delivers exceptional real estate services with a modern approach to marketing and technology. They emphasize client education, innovative marketing, and community. <a href="https://dwellrg.com/agent/skyler-smith" target="_blank" rel="noopener noreferrer">Skyler's Dwell profile</a></p>
         </section>
 
         <section className="card" style={{marginTop:'1rem'}}>
