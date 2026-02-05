@@ -21,7 +21,8 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
     const state = {
       // longer random delay between blinks (3s - 8s)
       blinkTimer: Math.random()*5000 + 3000,
-      blinkProgress: 0,
+      // blinkEnd (timestamp in ms) when current blink finishes
+      blinkEnd: 0,
       playPulse: 0
     }
 
@@ -34,7 +35,8 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       ctx.fillRect(0,0,w,h)
     }
 
-    function drawPet(t){
+    function drawPet(t, nowTs){
+      const ts = nowTs || 0
       ctx.clearRect(0,0,w,h)
       drawBackground()
 
@@ -74,13 +76,15 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       const eyeXOff = 18
       const eyeR = 6
 
-      // blinking logic
-      const isBlinking = state.blinkProgress > 0
-      let blinkScale = 1
-      if(isBlinking){
-        // blinkProgress goes 1 -> 0
-        blinkScale = Math.max(0.05, state.blinkProgress)
-      }
+      // blinking logic — time-based
+      const BLINK_MS = 200
+      const remaining = Math.max(0, state.blinkEnd - (ts || 0))
+      const isBlinking = remaining > 0
+      // progress 1 -> 0 as blink runs
+      const progress = isBlinking ? (remaining / BLINK_MS) : 0
+      // map progress to eye scale (closed at ~0.05)
+      const blinkScale = isBlinking ? Math.max(0.05, progress) : 1
+
 
       ctx.fillStyle = '#111'
       // left
@@ -139,18 +143,16 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       const delta = Math.min(60, ts - (step._lastTs || ts))
       step._lastTs = ts
       state.blinkTimer -= delta
-      if(state.blinkTimer <= 0 && state.blinkProgress <= 0){
-        state.blinkProgress = 1
-        // next blink after 2-6 seconds
-        state.blinkTimer = 2000 + Math.random()*4000
-      }
-      if(state.blinkProgress > 0){
-        // slow down blink progression for a smoother, slower blink
-        state.blinkProgress -= 0.04
-        if(state.blinkProgress < 0) state.blinkProgress = 0
+      // When timer hits zero, start a blink that lasts BLINK_MS
+      const BLINK_MS = 200
+      if(state.blinkTimer <= 0 && ts > state.blinkEnd){
+        state.blinkEnd = ts + BLINK_MS
+        // next blink after 3-8 seconds
+        state.blinkTimer = 3000 + Math.random()*5000
       }
 
-      drawPet(t)
+      drawPet(t, ts)
+
       raf = requestAnimationFrame(step)
     }
 
