@@ -16,7 +16,7 @@ export default function Home() {
       <main className="container">
         <section className="hero">
           <h1 style={{marginBottom:8}}>Skyler Smith</h1>
-          <p style={{color:'var(--muted)',marginTop:0}}>Founder, Bridger Gear. Outdoor gear, product design, real estate agent at Dwell Realty Group. Coffee enthusiast.</p>
+          <p style={{color:'var(--muted)',marginTop:0}}>Founder, Bridger Gear. Outdoor gear, product design, real estate agent at Dwell Realty Group.</p>
         </section>
 
         <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem'}}>
