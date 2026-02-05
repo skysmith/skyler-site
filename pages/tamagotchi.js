@@ -78,7 +78,13 @@ export default function Tamagotchi(){
             {/* Vector pet (clean, scalable) */}
             {/* Animated SVG pet (bobbing, blink) */}
             {/* Canvas-based pet for richer 2D animation */}
-            <CanvasPet mood={happiness>60?'happy':happiness<30?'sad':'neutral'} play={playAnim} size={180} />
+            {/* mood derived from stats: prioritize energy (tired), then happiness (sad), hunger (hungry), otherwise neutral/happy */}
+            <CanvasPet mood={
+              energy < 30 ? 'tired' :
+              hunger > 80 ? 'hungry' :
+              happiness < 30 ? 'sad' :
+              happiness > 60 ? 'happy' : 'neutral'
+            } play={playAnim} size={180} />
             <p>Hunger: {hunger}</p>
             <div style={{background:'#eee',height:10,borderRadius:6}}><div style={{width:`${hunger}%`,height:10,background:'#f97316',borderRadius:6}}></div></div>
             <p>Energy: {energy}</p>

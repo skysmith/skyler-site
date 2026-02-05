@@ -55,18 +55,32 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       ctx.fillStyle = 'rgba(0,0,0,0.06)'
       ctx.fill()
 
-      // body gradient
+      // body gradient (adapt for tired/hungry moods)
       const grad = ctx.createLinearGradient(cx - rx, cy - ry, cx + rx, cy + ry)
-      grad.addColorStop(0, mood==='happy'? '#fff0b3' : mood==='sad'? '#d9eaff' : '#ffe5b8')
-      grad.addColorStop(1, mood==='happy'? '#ffd166' : mood==='sad'? '#a0c4ff' : '#ffd9b3')
+      if(mood === 'happy'){
+        grad.addColorStop(0, '#fff0b3')
+        grad.addColorStop(1, '#ffd166')
+      } else if(mood === 'sad'){
+        grad.addColorStop(0, '#d9eaff')
+        grad.addColorStop(1, '#a0c4ff')
+      } else if(mood === 'tired'){
+        grad.addColorStop(0, '#f6f1e6')
+        grad.addColorStop(1, '#e6d7c5')
+      } else if(mood === 'hungry'){
+        grad.addColorStop(0, '#fff2e6')
+        grad.addColorStop(1, '#ffd9c2')
+      } else {
+        grad.addColorStop(0, '#ffe5b8')
+        grad.addColorStop(1, '#ffd9b3')
+      }
       ctx.beginPath()
       ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI*2)
       ctx.fillStyle = grad
       ctx.fill()
 
-      // cheeks
+      // cheeks (less pronounced when tired)
       ctx.beginPath()
-      ctx.fillStyle = 'rgba(255,138,138,0.9)'
+      ctx.fillStyle = mood==='tired' ? 'rgba(255,138,138,0.6)' : 'rgba(255,138,138,0.9)'
       ctx.arc(cx - 22, cy + 10, 6, 0, Math.PI*2)
       ctx.arc(cx + 22, cy + 10, 6, 0, Math.PI*2)
       ctx.fill()
@@ -83,8 +97,11 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       // progress 1 -> 0 as blink runs
       const progress = isBlinking ? (remaining / BLINK_MS) : 0
       // map progress to eye scale (closed at ~0.05)
-      const blinkScale = isBlinking ? Math.max(0.05, progress) : 1
-
+      let blinkScale = isBlinking ? Math.max(0.05, progress) : 1
+      // tired pets keep eyes partially closed
+      if(mood === 'tired' && !isBlinking){
+        blinkScale = 0.5
+      }
 
       ctx.fillStyle = '#111'
       // left
@@ -107,6 +124,13 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       }else if(mood==='sad'){
         ctx.moveTo(cx - 12, cy + 20)
         ctx.quadraticCurveTo(cx, cy + 8 - pulse*4, cx + 12, cy + 20)
+      }else if(mood==='tired'){
+        // small straight tired mouth
+        ctx.moveTo(cx - 10, cy + 16)
+        ctx.lineTo(cx + 10, cy + 16)
+      }else if(mood==='hungry'){
+        // little open o mouth
+        ctx.arc(cx, cy + 16, 6, 0, Math.PI*2)
       }else{
         ctx.moveTo(cx - 8, cy + 14)
         ctx.quadraticCurveTo(cx, cy + 18, cx + 8, cy + 14)
