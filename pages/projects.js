@@ -30,7 +30,7 @@ export default function Projects(){
 
         <section className="card" style={{marginTop:'1rem'}}>
           <h3>Tony Grove — Music</h3>
-          <p>Listen to the Tony Grove soundtrack: <a href="https://open.spotify.com/search/Tony%20Grove" target="_blank" rel="noopener noreferrer">Spotify search for Tony Grove</a> · <a href="https://music.apple.com/us/search?term=Tony%20Grove" target="_blank" rel="noopener noreferrer">Apple Music search for Tony Grove</a></p>
+          <p>Listen to the Tony Grove soundtrack: <a href="https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw" target="_blank" rel="noopener noreferrer">Spotify — Tony Grove</a> · <a href="https://music.apple.com/us/search?term=Tony%20Grove" target="_blank" rel="noopener noreferrer">Apple Music search for Tony Grove</a></p>
         </section>
       </main>
     </div>
