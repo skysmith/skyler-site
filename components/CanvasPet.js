@@ -19,7 +19,8 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
     ctx.scale(devicePixelRatio, devicePixelRatio)
 
     const state = {
-      blinkTimer: Math.random()*3000 + 1000,
+      // longer random delay between blinks (3s - 8s)
+      blinkTimer: Math.random()*5000 + 3000,
       blinkProgress: 0,
       playPulse: 0
     }
@@ -134,16 +135,18 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       if(!start) start = ts
       const t = ts - start
 
-      // update blink timer
-      state.blinkTimer -= (ts - (start + (t - (ts - start)))) || 16
-      // simpler: count down
-      state.blinkTimer -= 16
+      // update blink timer (countdown by frame delta)
+      const delta = Math.min(60, ts - (step._lastTs || ts))
+      step._lastTs = ts
+      state.blinkTimer -= delta
       if(state.blinkTimer <= 0 && state.blinkProgress <= 0){
         state.blinkProgress = 1
-        state.blinkTimer = 200 + Math.random()*3000
+        // next blink after 2-6 seconds
+        state.blinkTimer = 2000 + Math.random()*4000
       }
       if(state.blinkProgress > 0){
-        state.blinkProgress -= 0.15
+        // slow down blink progression for a smoother, slower blink
+        state.blinkProgress -= 0.04
         if(state.blinkProgress < 0) state.blinkProgress = 0
       }
 
