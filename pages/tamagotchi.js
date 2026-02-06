@@ -96,30 +96,28 @@ export default function Tamagotchi(){
           </div>
           <div className="card">
             <h3>Actions</h3>
-            <div style={{display:'flex',gap:'0.5rem',flexWrap:'wrap'}}>
-              <button onClick={handleEat} style={{padding:'0.5rem 1rem'}}>Eat</button>
-              <button onClick={handleSleep} style={{padding:'0.5rem 1rem'}}>Sleep</button>
-              <button onClick={handlePlay} style={{padding:'0.5rem 1rem'}}>Play</button>
-              <button onClick={saveState} style={{padding:'0.5rem 1rem'}}>Save</button>
-              <button onClick={handleReset} style={{padding:'0.5rem 1rem',background:'#fee2e2'}}>Reset</button>
-            </div>
+            <div style={{display:'flex',gap:'0.5rem',flexWrap:'wrap',alignItems:'center'}}>
+              <div style={{display:'flex',gap:'0.5rem',flexWrap:'wrap'}}>
+                <button onClick={handleEat} style={{padding:'0.5rem 1rem'}}>Eat</button>
+                <button onClick={handleSleep} style={{padding:'0.5rem 1rem'}}>Sleep</button>
+                <button onClick={handlePlay} style={{padding:'0.5rem 1rem'}}>Play</button>
+                <button onClick={saveState} style={{padding:'0.5rem 1rem'}}>Save</button>
+                <button onClick={handleReset} style={{padding:'0.5rem 1rem',background:'#fee2e2'}}>Reset</button>
+              </div>
 
-            <div style={{marginTop:12}}>
-              <label style={{display:'block',marginBottom:6}}>Meditate strength: {meditateLevel}%</label>
-              <input type="range" min="0" max="100" value={meditateLevel} onChange={e=>setMeditateLevel(Number(e.target.value))} />
-              <div style={{marginTop:8}}>
+              <div style={{marginLeft:12,display:'flex',flexDirection:'column',alignItems:'flex-start'}}>
+                <label style={{display:'block',marginBottom:6}}>Meditate: {meditateLevel}%</label>
+                <input type="range" min="0" max="100" value={meditateLevel} onChange={e=>setMeditateLevel(Number(e.target.value))} />
                 <button onClick={()=>{
-                  // meditate: restore energy and happiness based on slider
                   const energyGain = Math.round(meditateLevel/5)
                   const happinessGain = Math.round(meditateLevel/10)
                   setEnergy(e=>clamp(e+energyGain))
                   setHappiness(h=>clamp(h+happinessGain))
-                  // meditating reduces hunger slightly
                   setHunger(h=>clamp(h-5))
                   setPlayAnim(true)
                   saveState()
                   setTimeout(()=>setPlayAnim(false),800)
-                }} style={{padding:'0.5rem 1rem',marginTop:8}}>Meditate</button>
+                }} style={{padding:'0.4rem 0.8rem',marginTop:8}}>Meditate</button>
               </div>
             </div>
 
