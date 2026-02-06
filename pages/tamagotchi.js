@@ -17,6 +17,7 @@ export default function Tamagotchi(){
   const [name, setName] = useState('Buddy')
   const [lastSaved, setLastSaved] = useState(null)
   const [playAnim, setPlayAnim] = useState(false)
+  const [meditateLevel, setMeditateLevel] = useState(50)
 
   // load from localStorage
   useEffect(()=>{
@@ -102,6 +103,26 @@ export default function Tamagotchi(){
               <button onClick={saveState} style={{padding:'0.5rem 1rem'}}>Save</button>
               <button onClick={handleReset} style={{padding:'0.5rem 1rem',background:'#fee2e2'}}>Reset</button>
             </div>
+
+            <div style={{marginTop:12}}>
+              <label style={{display:'block',marginBottom:6}}>Meditate strength: {meditateLevel}%</label>
+              <input type="range" min="0" max="100" value={meditateLevel} onChange={e=>setMeditateLevel(Number(e.target.value))} />
+              <div style={{marginTop:8}}>
+                <button onClick={()=>{
+                  // meditate: restore energy and happiness based on slider
+                  const energyGain = Math.round(meditateLevel/5)
+                  const happinessGain = Math.round(meditateLevel/10)
+                  setEnergy(e=>clamp(e+energyGain))
+                  setHappiness(h=>clamp(h+happinessGain))
+                  // meditating reduces hunger slightly
+                  setHunger(h=>clamp(h-5))
+                  setPlayAnim(true)
+                  saveState()
+                  setTimeout(()=>setPlayAnim(false),800)
+                }} style={{padding:'0.5rem 1rem',marginTop:8}}>Meditate</button>
+              </div>
+            </div>
+
             <div style={{marginTop:12}}>
               <label style={{display:'block',marginBottom:6}}>Pet name</label>
               <input value={name} onChange={e=>setName(e.target.value)} style={{padding:'0.5rem',width:'100%'}} />
