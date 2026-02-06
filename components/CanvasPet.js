@@ -44,118 +44,132 @@ export default function CanvasPet({mood='neutral', play=false, size=180}){
       const bob = Math.sin(t/600)*4
       const pulse = play ? (Math.sin(t/120)+1)/2 : 0
 
-      // body
+      // knight body/helmet
       const cx = w/2
       const cy = h/2 + 6 + bob
-      const rx = 44
-      const ry = 40
-      // body shadow
+
+      // shadow under knight
       ctx.beginPath()
-      ctx.ellipse(cx, cy+6, rx, ry, 0, 0, Math.PI*2)
-      ctx.fillStyle = 'rgba(0,0,0,0.06)'
+      ctx.ellipse(cx, cy+34, 36, 10, 0, 0, Math.PI*2)
+      ctx.fillStyle = 'rgba(0,0,0,0.12)'
       ctx.fill()
 
-      // body gradient (adapt for tired/hungry moods)
-      const grad = ctx.createLinearGradient(cx - rx, cy - ry, cx + rx, cy + ry)
+      // helmet base
+      ctx.save()
+      ctx.translate(cx, cy)
+      const helmetW = 68
+      const helmetH = 70
+      const helmGrad = ctx.createLinearGradient(-helmetW/2, -helmetH/2, helmetW/2, helmetH/2)
       if(mood === 'happy'){
-        grad.addColorStop(0, '#fff0b3')
-        grad.addColorStop(1, '#ffd166')
+        helmGrad.addColorStop(0, '#f0f4ff')
+        helmGrad.addColorStop(1, '#cfe0ff')
       } else if(mood === 'sad'){
-        grad.addColorStop(0, '#d9eaff')
-        grad.addColorStop(1, '#a0c4ff')
+        helmGrad.addColorStop(0, '#dfe8f8')
+        helmGrad.addColorStop(1, '#b8cfe8')
       } else if(mood === 'tired'){
-        grad.addColorStop(0, '#f6f1e6')
-        grad.addColorStop(1, '#e6d7c5')
+        helmGrad.addColorStop(0, '#f0f0f0')
+        helmGrad.addColorStop(1, '#d8d8d8')
       } else if(mood === 'hungry'){
-        grad.addColorStop(0, '#fff2e6')
-        grad.addColorStop(1, '#ffd9c2')
+        helmGrad.addColorStop(0, '#fff6e6')
+        helmGrad.addColorStop(1, '#ffe6b3')
       } else {
-        grad.addColorStop(0, '#ffe5b8')
-        grad.addColorStop(1, '#ffd9b3')
+        helmGrad.addColorStop(0, '#eae6d6')
+        helmGrad.addColorStop(1, '#d8cba8')
       }
+      ctx.fillStyle = helmGrad
       ctx.beginPath()
-      ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI*2)
-      ctx.fillStyle = grad
+      ctx.ellipse(0, -6, helmetW/2, helmetH/2, 0, Math.PI, 0, true)
       ctx.fill()
 
-      // cheeks (less pronounced when tired)
+      // visor slot
+      const visorY = 6
+      const visorW = 44
+      const visorH = 16
+      // visor background
+      ctx.fillStyle = '#111'
       ctx.beginPath()
-      ctx.fillStyle = mood==='tired' ? 'rgba(255,138,138,0.6)' : 'rgba(255,138,138,0.9)'
-      ctx.arc(cx - 22, cy + 10, 6, 0, Math.PI*2)
-      ctx.arc(cx + 22, cy + 10, 6, 0, Math.PI*2)
+      ctx.ellipse(0, visorY, visorW/2, visorH/2, 0, 0, Math.PI*2)
       ctx.fill()
 
-      // eyes
-      const eyeY = cy - 6
-      const eyeXOff = 18
-      const eyeR = 6
-
-      // blinking logic — time-based
+      // eye slits based on blink
+      const eyeOff = 14
+      const eyeH = 6
       const BLINK_MS = 200
       const remaining = Math.max(0, state.blinkEnd - (ts || 0))
       const isBlinking = remaining > 0
-      // progress 1 -> 0 as blink runs
       const progress = isBlinking ? (remaining / BLINK_MS) : 0
-      // map progress to eye scale (closed at ~0.05)
-      let blinkScale = isBlinking ? Math.max(0.05, progress) : 1
-      // tired pets keep eyes partially closed
-      if(mood === 'tired' && !isBlinking){
-        blinkScale = 0.5
-      }
+      let eyeClose = isBlinking ? Math.max(0.05, progress) : 1
+      if(mood === 'tired' && !isBlinking) eyeClose = 0.4
 
-      ctx.fillStyle = '#111'
-      // left
+      ctx.fillStyle = '#ffd' // eye glow color
+      // left eye slit
       ctx.beginPath()
-      ctx.ellipse(cx - eyeXOff, eyeY, eyeR, eyeR*blinkScale, 0, 0, Math.PI*2)
+      ctx.ellipse(-eyeOff, visorY, 8, eyeH*eyeClose, 0, 0, Math.PI*2)
       ctx.fill()
-      // right
+      // right eye slit
       ctx.beginPath()
-      ctx.ellipse(cx + eyeXOff, eyeY, eyeR, eyeR*blinkScale, 0, 0, Math.PI*2)
+      ctx.ellipse(eyeOff, visorY, 8, eyeH*eyeClose, 0, 0, Math.PI*2)
       ctx.fill()
 
-      // mouth
+      // mouth / grille indicator
       ctx.strokeStyle = '#111'
       ctx.lineWidth = 2
-      ctx.lineCap = 'round'
       ctx.beginPath()
-      if(mood==='happy'){
-        ctx.moveTo(cx - 12, cy + 10)
-        ctx.quadraticCurveTo(cx, cy + 24 + pulse*6, cx + 12, cy + 10)
-      }else if(mood==='sad'){
-        ctx.moveTo(cx - 12, cy + 20)
-        ctx.quadraticCurveTo(cx, cy + 8 - pulse*4, cx + 12, cy + 20)
-      }else if(mood==='tired'){
-        // small straight tired mouth
-        ctx.moveTo(cx - 10, cy + 16)
-        ctx.lineTo(cx + 10, cy + 16)
-      }else if(mood==='hungry'){
-        // little open o mouth
-        ctx.arc(cx, cy + 16, 6, 0, Math.PI*2)
-      }else{
-        ctx.moveTo(cx - 8, cy + 14)
-        ctx.quadraticCurveTo(cx, cy + 18, cx + 8, cy + 14)
+      if(mood === 'happy'){
+        ctx.moveTo(-10, 22)
+        ctx.quadraticCurveTo(0, 32 + pulse*6, 10, 22)
+      } else if(mood === 'sad'){
+        ctx.moveTo(-10, 28)
+        ctx.quadraticCurveTo(0, 18 - pulse*4, 10, 28)
+      } else if(mood === 'tired'){
+        ctx.moveTo(-8, 24)
+        ctx.lineTo(8, 24)
+      } else if(mood === 'hungry'){
+        ctx.beginPath()
+        ctx.arc(0, 26, 6, 0, Math.PI*2)
+        ctx.stroke()
+      } else {
+        ctx.moveTo(-8, 24)
+        ctx.quadraticCurveTo(0, 28, 8, 24)
       }
       ctx.stroke()
 
-      // antenna/ear — animated when play
-      ctx.save()
-      ctx.translate(cx + 34, cy - 28 + (play? -6*Math.sin(t/180) : 0))
-      ctx.strokeStyle = '#c89457'
-      ctx.lineWidth = 4
+      // plume on top (color varies with mood)
+      const plumeColors = {
+        happy: '#ffd166',
+        sad: '#98c1ff',
+        tired: '#cfcfcf',
+        hungry: '#ffd9b3',
+        neutral: '#ffe5b8'
+      }
+      ctx.fillStyle = plumeColors[mood] || plumeColors['neutral']
       ctx.beginPath()
-      ctx.moveTo(0,0)
-      ctx.quadraticCurveTo(6,-12,14,-6)
-      ctx.stroke()
-      ctx.fillStyle = '#ffd9b3'
-      ctx.beginPath()
-      ctx.ellipse(14,-6,6,6,0,0,Math.PI*2)
+      ctx.moveTo(-28, -26)
+      ctx.quadraticCurveTo(0, -48 + (play? -6*Math.sin(t/120) : 0), 28, -26)
+      ctx.quadraticCurveTo(0, -30, -28, -26)
       ctx.fill()
+
       ctx.restore()
 
-      // small shine on body
+      // small shield to the side when playing
+      if(play){
+        ctx.save()
+        ctx.translate(cx + 46, cy + 6 - 6*Math.sin(t/120))
+        ctx.fillStyle = '#cfe0ff'
+        ctx.beginPath()
+        ctx.moveTo(0, -12)
+        ctx.lineTo(12, 0)
+        ctx.lineTo(0, 18)
+        ctx.lineTo(-12, 0)
+        ctx.closePath()
+        ctx.fill()
+        ctx.restore()
+      }
+
+      // small shine on helmet
       ctx.beginPath()
       ctx.fillStyle='rgba(255,255,255,0.45)'
-      ctx.ellipse(cx - 12, cy - 12, 14, 10, -0.6, 0, Math.PI*2)
+      ctx.ellipse(cx - 18, cy - 18, 12, 6, -0.6, 0, Math.PI*2)
       ctx.fill()
     }
 
