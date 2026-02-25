@@ -4,7 +4,7 @@ export default function Home() {
       badge: '🎲',
       title: 'Dice Rodeo',
       desc: 'Fast multiplayer dice rounds built for replay.',
-      href: 'https://bank-dice-phi.vercel.app/index.html',
+      href: 'https://bank-dice-phi.vercel.app/index.html?play=bank-local',
       cta: 'Play Dice Rodeo →'
     },
     {
