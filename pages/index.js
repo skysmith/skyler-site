@@ -1,4 +1,3 @@
-import Link from 'next/link'
 export default function Home() {
   const featured = [
     {
@@ -44,11 +43,6 @@ export default function Home() {
       <header>
         <div className="container nav">
           <div style={{fontWeight:700}}>Skyler Smith</div>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
         </div>
       </header>
       <main className="container">
@@ -84,7 +78,7 @@ export default function Home() {
         </section>
 
         <footer className="footer">
-          © {new Date().getFullYear()} Skyler Smith · <Link href="/projects">Projects</Link> · <Link href="/contact">Contact</Link>
+          © {new Date().getFullYear()} Skyler Smith
         </footer>
       </main>
     </div>
