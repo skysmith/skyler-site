@@ -2,10 +2,10 @@ export default function Home() {
   const featured = [
     {
       badge: '🎲',
-      title: 'Bank Dice',
+      title: 'Dice Rodeo',
       desc: 'Fast multiplayer dice rounds built for replay.',
-      href: 'https://bank-dice-phi.vercel.app',
-      cta: 'Play Bank Dice →'
+      href: 'https://bank-dice-phi.vercel.app/index.html',
+      cta: 'Play Dice Rodeo →'
     },
     {
       badge: '🧩',
