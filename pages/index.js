@@ -15,27 +15,27 @@ export default function Home() {
       <main className="container">
         <section className="hero">
           <h1 style={{marginBottom:8}}>Skyler Smith</h1>
-          <p style={{color:'var(--muted)',marginTop:0}}>Founder, Bridger Gear. Outdoor gear, product design, real estate agent at Dwell Realty Group.</p>
+          <p style={{color:'var(--muted)',marginTop:0}}>I build playable web games and fun side projects.</p>
         </section>
 
         <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem'}}>
           <div className="card">
             <h3>About</h3>
-            <p>Short bio, links, and recent work.</p>
+            <p>This site is a home for finished games, experiments, and interactive ideas.</p>
           </div>
           <div className="card">
             <h3>Latest Projects</h3>
-            <p>Bridger Gear — outdoor gear brand. Clementine Kids — children’s clothing. <Link href="/projects">See projects →</Link></p>
+            <p>Bank Dice and CrossDice Arcade are live now. <Link href="/projects">See projects →</Link></p>
           </div>
         </section>
 
         <section style={{marginTop:'2rem'}} className="card">
           <h3>Get in touch</h3>
-          <p>If you want to reach me, <Link href="/contact">send a message</Link> or email <a href="mailto:support@clementinekids.com">support@clementinekids.com</a>.</p>
+          <p>If you want to reach me, <Link href="/contact">send a message</Link>.</p>
         </section>
 
         <footer className="footer">
-          © {new Date().getFullYear()} Skyler Smith — <a href="https://bridgergear.com">Bridger Gear</a> · <a href="https://clementinekids.com">Clementine Kids</a> · <a href="https://dwellrg.com">Dwell Realty Group</a>
+          © {new Date().getFullYear()} Skyler Smith — <a href="https://bank-dice-phi.vercel.app" target="_blank" rel="noopener noreferrer">Bank Dice</a> · <a href="https://bank-dice-phi.vercel.app/qwixx/index.html" target="_blank" rel="noopener noreferrer">CrossDice Arcade</a>
         </footer>
       </main>
     </div>

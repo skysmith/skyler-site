@@ -14,11 +14,10 @@ export default function Contact(){
       <main className="container">
         <h1>Contact</h1>
         <section className="card">
-          <p>If you'd like to reach Skyler, email <a href="mailto:support@clementinekids.com">support@clementinekids.com</a> or connect via the links below.</p>
+          <p>If you'd like to reach Skyler, connect through the live project links below.</p>
           <ul>
-            <li><a href="https://bridgergear.com">Bridger Gear</a></li>
-            <li><a href="https://clementinekids.com">Clementine Kids</a></li>
-            <li><a href="https://dwellrg.com">Dwell Realty Group</a></li>
+            <li><a href="https://bank-dice-phi.vercel.app" target="_blank" rel="noopener noreferrer">Bank Dice</a></li>
+            <li><a href="https://bank-dice-phi.vercel.app/qwixx/index.html" target="_blank" rel="noopener noreferrer">CrossDice Arcade</a></li>
           </ul>
         </section>
       </main>
