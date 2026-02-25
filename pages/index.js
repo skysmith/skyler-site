@@ -31,7 +31,7 @@ export default function Home() {
       cta: 'Visit Bridger Gear →'
     },
     {
-      badge: '🧸',
+      badge: '🍊',
       title: 'Clementine Kids',
       desc: 'Kids bedding and nursery goods.',
       href: 'https://clementinekids.com',
@@ -58,8 +58,8 @@ export default function Home() {
         </section>
 
         <section className="cascade">
-          {featured.map((item, idx) => (
-            <article className="card cascade-item" style={{ marginLeft: `${idx * 18}px` }} key={item.title}>
+          {featured.map((item) => (
+            <article className="card cascade-item" key={item.title}>
               <div className="cascade-head">
                 <span className="badge">{item.badge}</span>
                 <h3>{item.title}</h3>
