@@ -7,3 +7,10 @@ header{background:#f8fafb;border-bottom:1px solid #eee}
 .hero{padding:3rem 0}
 .card{background:#fff;border:1px solid #eee;padding:1rem;border-radius:8px}
 .footer{padding:2rem 0;color:var(--muted);font-size:0.9rem}
+.cascade{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}
+.cascade-item{transition:transform .2s ease}
+.cascade-item:hover{transform:translateY(-2px)}
+
+@media (max-width: 700px){
+  .cascade-item{margin-left:0 !important}
+}

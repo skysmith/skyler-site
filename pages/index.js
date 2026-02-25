@@ -1,5 +1,38 @@
 import Link from 'next/link'
 export default function Home() {
+  const featured = [
+    {
+      title: 'Bank Dice',
+      desc: 'Fast multiplayer dice rounds built for replay.',
+      href: 'https://bank-dice-phi.vercel.app',
+      cta: 'Play Bank Dice →'
+    },
+    {
+      title: 'CrossDice Arcade',
+      desc: 'Turn-based dice board game with locking rows and podium finish.',
+      href: 'https://bank-dice-phi.vercel.app/qwixx/index.html',
+      cta: 'Play CrossDice Arcade →'
+    },
+    {
+      title: 'Tony Grove Music',
+      desc: 'Listen to Tony Grove on Spotify.',
+      href: 'https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw',
+      cta: 'Open on Spotify →'
+    },
+    {
+      title: 'Bridger Gear',
+      desc: 'Outdoor gear brand and shop.',
+      href: 'https://bridgergear.com',
+      cta: 'Visit Bridger Gear →'
+    },
+    {
+      title: 'Clementine Kids',
+      desc: 'Kids bedding and nursery goods.',
+      href: 'https://clementinekids.com',
+      cta: 'Visit Clementine Kids →'
+    }
+  ]
+
   return (
     <div>
       <header>
@@ -15,27 +48,23 @@ export default function Home() {
       <main className="container">
         <section className="hero">
           <h1 style={{marginBottom:8}}>Skyler Smith</h1>
-          <p style={{color:'var(--muted)',marginTop:0}}>I build playable web games and fun side projects.</p>
+          <p style={{color:'var(--muted)',marginTop:0}}>Games, music, and live projects.</p>
         </section>
 
-        <section style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1rem'}}>
-          <div className="card">
-            <h3>About</h3>
-            <p>This site is a home for finished games, experiments, and interactive ideas.</p>
-          </div>
-          <div className="card">
-            <h3>Latest Projects</h3>
-            <p>Bank Dice and CrossDice Arcade are live now. <Link href="/projects">See projects →</Link></p>
-          </div>
-        </section>
-
-        <section style={{marginTop:'2rem'}} className="card">
-          <h3>Get in touch</h3>
-          <p>If you want to reach me, <Link href="/contact">send a message</Link>.</p>
+        <section className="cascade">
+          {featured.map((item, idx) => (
+            <article className="card cascade-item" style={{ marginLeft: `${idx * 18}px` }} key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+              <p>
+                <a href={item.href} target="_blank" rel="noopener noreferrer">{item.cta}</a>
+              </p>
+            </article>
+          ))}
         </section>
 
         <footer className="footer">
-          © {new Date().getFullYear()} Skyler Smith — <a href="https://bank-dice-phi.vercel.app" target="_blank" rel="noopener noreferrer">Bank Dice</a> · <a href="https://bank-dice-phi.vercel.app/qwixx/index.html" target="_blank" rel="noopener noreferrer">CrossDice Arcade</a>
+          © {new Date().getFullYear()} Skyler Smith · <Link href="/projects">Projects</Link> · <Link href="/contact">Contact</Link>
         </footer>
       </main>
     </div>

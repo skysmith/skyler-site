@@ -25,11 +25,6 @@ export default function Projects(){
         </section>
 
         <section className="card" style={{marginTop:'1rem'}}>
-          <h3>Pocket Pal — Mini Tamagotchi</h3>
-          <p>A small pixel‑style virtual pet I built as a playful demo. Feed it, put it to sleep, and play with it — state is saved in your browser. <a href="/tamagotchi">Play Pocket Pal →</a></p>
-        </section>
-
-        <section className="card" style={{marginTop:'1rem'}}>
           <h3>Tony Grove — Music</h3>
           <div style={{display:'flex',gap:'1rem',alignItems:'center',flexWrap:'wrap'}}>
             <iframe src="https://open.spotify.com/embed/artist/683U6wyvDadi5GExsaaojj" width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -38,6 +33,18 @@ export default function Projects(){
               <p style={{marginTop:6}}><a href="https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw" target="_blank" rel="noopener noreferrer">Open in Spotify</a></p>
             </div>
           </div>
+        </section>
+
+        <section className="card" style={{marginTop:'1rem'}}>
+          <h3>Bridger Gear</h3>
+          <p>Outdoor gear brand focused on practical and accessible products.</p>
+          <p><a href="https://bridgergear.com" target="_blank" rel="noopener noreferrer">Visit Bridger Gear →</a></p>
+        </section>
+
+        <section className="card" style={{marginTop:'1rem'}}>
+          <h3>Clementine Kids</h3>
+          <p>Kids bedding and nursery products.</p>
+          <p><a href="https://clementinekids.com" target="_blank" rel="noopener noreferrer">Visit Clementine Kids →</a></p>
         </section>
       </main>
     </div>
