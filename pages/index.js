@@ -2,66 +2,149 @@ import Head from 'next/head'
 
 const workLanes = [
   {
-    title: 'Product engineering',
-    summary: 'Shipping web products that stay legible under real use.',
-    detail: 'Interface systems, architecture decisions, and cleanup work that reduce long-term drag instead of adding more shine.'
+    title: 'Small Business',
+    summary: 'Practical operating systems for useful work.',
+    detail: 'I like small, durable tools around inventory, finance, ecommerce, and the daily mechanics that keep a business moving.'
   },
   {
-    title: 'Operational software',
-    summary: 'Internal tools for reconciliation, reporting, and review.',
-    detail: 'Work surfaces that need to feel trustworthy, fast to scan, and durable enough for repeat operator use.'
+    title: 'Realty',
+    summary: 'Transaction work with less avoidable friction.',
+    detail: 'Real estate is easier to keep doing when deadlines, follow-up, and coordination have a calmer surface.'
   },
   {
-    title: 'Focused experiments',
-    summary: 'Small prototypes and automation ideas kept narrow on purpose.',
-    detail: 'Useful proofs of concept that can be revised quickly, archived cleanly, or expanded only after they earn trust.'
+    title: 'Music',
+    summary: 'Songs, recordings, and related creative work.',
+    detail: 'Tony Grove is the public music thread, with room nearby for games, family-history projects, and useful experiments.'
+  }
+]
+
+const projectLinks = [
+  {
+    title: 'Tony Grove Music',
+    lane: 'Music',
+    summary: 'Songs and recordings from my folk-ish solo music project.',
+    href: 'https://open.spotify.com/artist/683U6wyvDadi5GExsaaojj?si=OhSxvCvRSQmI92vmmL8yZw',
+    access: 'public'
+  },
+  {
+    title: 'Bridger Gear',
+    lane: 'Business',
+    summary: 'Outdoor gear brand and shop.',
+    href: 'https://bridgergear.com',
+    access: 'public'
+  },
+  {
+    title: 'Clementine Kids',
+    lane: 'Business',
+    summary: 'Kids bedding, nursery goods, and the business that funds a lot of the practical experiments.',
+    href: 'https://clementinekids.com',
+    access: 'public'
+  },
+  {
+    title: 'Transaction Cockpit',
+    lane: 'Real estate',
+    summary: 'Local transaction coordination cockpit for deadlines, checklists, contract intake, documents, and reviewed follow-up drafts.',
+    href: 'http://localhost:3001',
+    access: 'local'
+  },
+  {
+    title: 'Finance + Clementine Ops Dashboard',
+    lane: 'Operations',
+    summary: 'Private money, QuickBooks, inventory, planning, and business operations dashboard.',
+    href: 'http://127.0.0.1:8765',
+    access: 'local'
+  },
+  {
+    title: 'Bill Pay',
+    lane: 'Operations',
+    summary: 'Human-reviewed bill intake, review, and payment-prep surface.',
+    href: 'http://localhost:3000',
+    access: 'local'
+  },
+  {
+    title: 'Instagram Planner',
+    lane: 'Business',
+    summary: 'Lightweight Bridger Gear image selection, caption drafting, and posting-prep workspace.',
+    href: 'http://127.0.0.1:8080',
+    access: 'local'
+  },
+  {
+    title: 'Arcade Lobby',
+    lane: 'Games',
+    summary: 'Cabinet-oriented game lobby and launcher for browser game experiments.',
+    href: 'http://localhost:5173',
+    access: 'local'
+  },
+  {
+    title: 'Dice Rodeo',
+    lane: 'Games',
+    summary: 'Fast browser dice game deployed as a public play surface.',
+    href: 'https://bank-dice-phi.vercel.app/index.html?play=bank-local',
+    access: 'public'
+  },
+  {
+    title: 'CrossDice Arcade',
+    lane: 'Games',
+    summary: 'Turn-based dice board game with rows, locks, and arcade scoring.',
+    href: 'https://bank-dice-phi.vercel.app/qwixx/index.html',
+    access: 'public'
+  },
+  {
+    title: 'Restock Raven',
+    lane: 'Inventory',
+    summary: 'Inventory and replenishment workspace for operating decisions.',
+    href: 'https://github.com/skysmith/restock-raven',
+    access: 'gated'
   }
 ]
 
 const operatingPrinciples = [
   {
-    label: 'Calm before clever',
-    copy: 'The page should read like a brief, not a product launch. Orientation wins before flourish.'
+    label: 'Useful before impressive',
+    copy: 'I am usually more interested in whether a thing lowers friction than whether it looks like a big announcement.'
   },
   {
-    label: 'Typography does the lifting',
-    copy: 'Hierarchy comes from type, spacing, and order. Borders and surfaces stay quiet unless they add real meaning.'
+    label: 'Small systems compound',
+    copy: 'A lot of the best work is not dramatic. It is the boring surface that makes tomorrow easier.'
   },
   {
-    label: 'Color is semantic',
-    copy: 'Neutrals dominate. Green marks stability and progress; rust is reserved for caution, drag, or burden.'
+    label: 'Leave room for side quests',
+    copy: 'I like projects that can stay alive without needing to become a whole identity or a giant plan.'
   }
 ]
 
-const summaryItems = [
+const contextItems = [
   {
-    value: '03',
-    label: 'Working lanes'
+    label: 'Based in',
+    value: 'Northern Utah',
+    copy: 'Working across small business, real estate, music, and practical private tools.'
   },
   {
-    value: '01',
-    label: 'Continuous canvas'
+    label: 'Public thread',
+    value: 'Music, shops, games',
+    copy: 'A few doors open outward; the rest point back to work surfaces that live closer to home.'
   },
   {
-    value: '02',
-    label: 'Live legal routes'
+    label: 'Private systems',
+    value: 'Operations and planning',
+    copy: 'Most of the useful software here is modest, local, and built to reduce everyday drag.'
   }
 ]
 
 const signalItems = [
   {
-    label: 'Mode',
-    value: 'Regular website',
+    label: 'Location',
+    value: 'Northern Utah',
     tone: 'positive'
   },
   {
-    label: 'Direction',
-    value: 'Calm operational minimalism',
+    label: 'Work',
+    value: 'Small Business, Realty, Music',
     tone: 'neutral'
   },
   {
-    label: 'Status',
-    value: 'Privacy policy and EULA remain live',
+    label: 'Access',
+    value: 'Some doors are local or gated',
     tone: 'warning'
   }
 ]
@@ -73,37 +156,44 @@ export default function Home() {
         <title>Skyler Smith</title>
         <meta
           name="description"
-          content="A typography-first website for product engineering, experiments, and practical operational systems."
+          content="Skyler Smith's quiet home base for Small Business, Realty, Music, and practical experiments."
         />
       </Head>
 
       <main className="site-shell">
         <header className="site-header">
           <div className="site-identity">
-            <p className="site-kicker">Skyler Smith</p>
-            <p className="site-masthead">Product engineering, operational software, and deliberate experiments.</p>
+            <img className="site-mark" src="/favicon.svg" alt="" aria-hidden="true" />
+            <div>
+              <p className="site-kicker">Skyler Smith</p>
+              <p className="site-masthead">Small Business, Realty, Music.</p>
+            </div>
           </div>
           <nav className="site-nav" aria-label="Primary">
-            <a href="#lanes">Lanes</a>
-            <a href="#principles">Principles</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#work">Work</a>
             <a href="#legal">Legal</a>
           </nav>
         </header>
 
         <section className="hero-grid" aria-labelledby="home-heading">
           <div className="hero-copy">
-            <p className="section-eyebrow">Operational brief</p>
-            <h1 id="home-heading">Quiet systems for work that needs to stay readable.</h1>
+            <h1 id="home-heading">Skyler Smith</h1>
             <p className="hero-summary">
-              This homepage now follows a quieter operational language: one continuous canvas, thin dividers,
-              report-like hierarchy, and restrained color that carries meaning instead of decoration.
+              I build and operate small, useful things: internal software, ecommerce systems, real-estate tools,
+              browser games, family-history projects, and songs under the name Tony Grove.
+            </p>
+            <p className="hero-summary hero-summary-secondary">
+              This site is mostly a home base. Some links are public; some are just signposts back to private
+              tools I use to keep work from turning into fog.
             </p>
             <div className="hero-links">
-              <a href="#lanes">
-                Review the lanes
+              <a href="#about">
+                Read the short bio
               </a>
-              <a href="#principles">
-                Read the principles
+              <a href="#projects">
+                Open project index
               </a>
               <a href="#legal">
                 Open the legal routes
@@ -121,22 +211,64 @@ export default function Home() {
           </aside>
         </section>
 
-        <section className="summary-strip" aria-label="Site summary">
-          {summaryItems.map((item) => (
-            <div className="summary-cell" key={item.label}>
-              <strong>{item.value}</strong>
+        <section className="context-strip" aria-label="Site context">
+          {contextItems.map((item) => (
+            <div className="context-cell" key={item.label}>
               <span>{item.label}</span>
+              <strong>{item.value}</strong>
+              <p>{item.copy}</p>
             </div>
           ))}
         </section>
 
-        <section className="section-band" id="lanes">
+        <section className="section-band about-band" id="about">
           <div className="section-heading">
-            <p className="section-eyebrow">Current lanes</p>
-            <h2>What this site is built to hold.</h2>
+            <p className="section-eyebrow">About</p>
+            <h2>A builder-operator in northern Utah.</h2>
+          </div>
+          <div className="bio-grid">
             <p>
-              The page stays narrow in scope on purpose: a clear operating surface for the kinds of work that
-              benefit from trust, legibility, and low-friction upkeep.
+              I make software and small systems for the real work around me: businesses, finances, creative
+              projects, real estate, and the everyday operations that become easier when they have a better
+              surface.
+            </p>
+            <p>
+              A lot of my projects are intentionally modest. I like tools that help a person think clearly,
+              follow through, and keep useful work from becoming heavier than it needs to be.
+            </p>
+          </div>
+        </section>
+
+        <section className="section-band" id="projects">
+          <div className="section-heading">
+            <p className="section-eyebrow">Project index</p>
+            <h2>Public links and private signposts.</h2>
+            <p>
+              A small directory for public, gated, and local-only projects. Some destinations are meant for
+              authenticated or machine-local use, so the link is the handoff, not a promise of public access.
+            </p>
+          </div>
+          <div className="project-list" role="list">
+            {projectLinks.map((item) => (
+              <a className="project-row" href={item.href} key={item.title} rel="noopener noreferrer" target="_blank" role="listitem">
+                <div className="project-heading">
+                  <p>{item.lane}</p>
+                  <h3>{item.title}</h3>
+                </div>
+                <p className="project-copy">{item.summary}</p>
+                <span className={`project-access project-access--${item.access}`}>{item.access}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="section-band" id="work">
+          <div className="section-heading">
+            <p className="section-eyebrow">Working modes</p>
+            <h2>What I tend to make.</h2>
+            <p>
+              The common thread is not a single industry. It is a preference for systems that make real life
+              easier to navigate.
             </p>
           </div>
           <div className="lane-list" role="list">
@@ -154,11 +286,10 @@ export default function Home() {
 
         <section className="section-band" id="principles">
           <div className="section-heading">
-            <p className="section-eyebrow">Operating principles</p>
-            <h2>The interface should feel managed, not marketed.</h2>
+            <p className="section-eyebrow">Principles</p>
+            <h2>A few preferences that keep showing up.</h2>
             <p>
-              The visual system stays report-like on purpose. Structure comes from reading order, spacing,
-              alignment, and thin rules before any heavier treatment appears.
+              These are less like brand pillars and more like habits I keep rediscovering while working.
             </p>
           </div>
           <div className="principle-list" role="list">
@@ -177,7 +308,7 @@ export default function Home() {
         <section className="section-band section-band--accent" id="legal">
           <div className="section-heading">
             <p className="section-eyebrow">Legal</p>
-            <h2>The operational pages stay available.</h2>
+            <h2>A couple of operational pages stay available.</h2>
             <p>
               Existing compliance pages for Clementine Ledger Sync remain live and inherit the same quieter
               visual language as the rest of the site.
@@ -190,7 +321,7 @@ export default function Home() {
         </section>
 
         <footer className="site-footer">
-          <p>Single-page site. Thin rules. Muted palette. No game shell.</p>
+          <p>Quiet home base. Public links, private signposts, and a few useful doors.</p>
         </footer>
       </main>
     </>
