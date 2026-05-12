@@ -48,6 +48,13 @@ const projectLinks = [
     access: 'local'
   },
   {
+    title: 'PorchDesk',
+    lane: 'Real estate',
+    summary: 'Public sample of a reviewed transaction desk, with private source notes behind a separate login.',
+    href: '/porchdesk',
+    access: 'public'
+  },
+  {
     title: 'Finance + Clementine Ops Dashboard',
     lane: 'Operations',
     summary: 'Private money, QuickBooks, inventory, planning, and business operations dashboard.',
@@ -249,16 +256,27 @@ export default function Home() {
             </p>
           </div>
           <div className="project-list" role="list">
-            {projectLinks.map((item) => (
-              <a className="project-row" href={item.href} key={item.title} rel="noopener noreferrer" target="_blank" role="listitem">
-                <div className="project-heading">
-                  <p>{item.lane}</p>
-                  <h3>{item.title}</h3>
-                </div>
-                <p className="project-copy">{item.summary}</p>
-                <span className={`project-access project-access--${item.access}`}>{item.access}</span>
-              </a>
-            ))}
+            {projectLinks.map((item) => {
+              const isExternal = item.href.startsWith('http')
+
+              return (
+                <a
+                  className="project-row"
+                  href={item.href}
+                  key={item.title}
+                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                  target={isExternal ? '_blank' : undefined}
+                  role="listitem"
+                >
+                  <div className="project-heading">
+                    <p>{item.lane}</p>
+                    <h3>{item.title}</h3>
+                  </div>
+                  <p className="project-copy">{item.summary}</p>
+                  <span className={`project-access project-access--${item.access}`}>{item.access}</span>
+                </a>
+              )
+            })}
           </div>
         </section>
 
