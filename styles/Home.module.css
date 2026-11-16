@@ -1,0 +1,62 @@
+.page {
+  display: grid;
+  align-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(48px, 10vw, 112px) 26px;
+  background: #f7f5ef;
+  color: #25251e;
+}
+
+.content {
+  width: min(100%, 31rem);
+  margin-inline: auto;
+}
+
+.name {
+  margin: 0 0 clamp(30px, 5vw, 48px);
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  font-size: clamp(3rem, 8vw, 5.25rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #d6d2c6;
+}
+
+.projects li {
+  border-bottom: 1px solid #d6d2c6;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 58px;
+  padding: 12px 2px 12px 0;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #355c40;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.link:focus-visible {
+  outline: 2px solid #355c40;
+  outline-offset: 4px;
+}
+
+.arrow {
+  color: #546653;
+  font-size: 1.2rem;
+}
